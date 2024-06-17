@@ -3,31 +3,127 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground: rgb(255, 255, 255);
+  --background-default: #040c18;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground);
+  background: var(--background-default);
 }
 
-@layer utilities {
+/* @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+} */
+.valign {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* vendor prefixes omitted due to brevity */
+}
+@layer base {
+  header {
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    display: block;
+    width: 90%;
+    background: radial-gradient(
+      at top left,
+      rgba(15, 66, 121, 1) 20%,
+      rgba(15, 66, 121, 0.4) 80%
+    );
+    height: 450px;
+    top: -50px;
+    left: -50px;
+    filter: blur(80px);
+    position: absolute;
+    z-index: -99;
+  }
+  header::after {
+    content: "";
+    display: block;
+    width: 40%;
+    background: radial-gradient(
+      at right 60%,
+      rgba(15, 66, 121, 1) 0%,
+      rgba(15, 66, 121, 0) 90%
+    );
+    height: 150px;
+    bottom: 190px;
+    right: 0;
+    filter: blur(80px);
+    position: absolute;
+    z-index: -99;
+  }
+  .defSection {
+    z-index: -2;
+  }
+  .defSection::before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(
+      farthest-corner at 0px 0px,
+      rgba(15, 66, 121, 1) 0%,
+      rgba(15, 66, 121, 0) 70%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    z-index: -1;
+    overflow: hidden;
+  }
+  .defSection::after {
+    content: "";
+    display: block;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(
+      farthest-corner at 240px 240px,
+      rgba(15, 66, 121, 1) 0%,
+      rgba(15, 66, 121, 0) 70%
+    );
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  @screen sm {
+    header::before {
+      width: 60%;
+      height: 350px;
+    }
+  }
+
+  @screen xl {
+    .defSection::after {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(
+        farthest-corner at 500px 500px,
+        rgba(15, 66, 121, 1) 0%,
+        rgba(15, 66, 121, 0.5) 20%,
+        rgba(15, 66, 121, 0) 60%
+      );
+      position: absolute;
+    }
   }
 }

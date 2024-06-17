@@ -1,0 +1,39 @@
+.slick-slider {
+  z-index: -1;
+}
+
+.slick-slider .slick-slide {
+  margin-left: 30px;
+}
+.slick-slider .slick-slide figure {
+  background-color: #042c54;
+  margin-top: 0;
+}
+
+.slick-slider .slick-slide img {
+  height: 200px;
+  width: 100%;
+}
+
+.slick-slider .slick-list {
+  margin-left: -30px;
+}
+.slick-slider .slick-track {
+  display: flex;
+}
+.slick-dots {
+  margin-bottom: -10px;
+}
+.slick-dots li button:before {
+  color: #fff;
+  opacity: 1;
+}
+
+.slick-dots li {
+  margin: 0 2px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #fff;
+  opacity: 0.25;
+}
